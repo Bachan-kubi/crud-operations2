@@ -17,6 +17,24 @@ async function run(){
     try{
         const productCollection = client.db('crud-product').collection('products');
         const users = client.db('crud-product').collection('users');
+        const allComments = client.db('crud-product').collection('comments');
+
+
+        app.get('/comments', async(req, res)=>{
+            const comments = allComments.find({});
+            const result = await comments.toArray();
+            res.send(result);
+        })
+
+
+        app.post('/comments', async(req, res)=>{
+            const query = req.body;
+            const commnet = await allComments.insertOne(query);
+            res.send(commnet);
+        });
+        
+
+
 
         app.get('/users', async (req, res)=>{
             const cursor = {}
