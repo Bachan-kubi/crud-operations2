@@ -1,6 +1,7 @@
 const express = require('express');
 const commentControllers = require('../../controllers/commentControllers');
 const viewCount = require('../../middleware/viewCount');
+const limiter = require('../../middleware/limiter');
 const router = express.Router();
 
 
@@ -19,7 +20,7 @@ router.route('/')
     .post(commentControllers.postComments)
 
     // route level middleware
-router.route('/:id').get(viewCount, commentControllers.getAllComments)
+router.route('/:id').get(viewCount, limiter, commentControllers.getAllComments)
 
 
     // old way
