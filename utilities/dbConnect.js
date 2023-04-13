@@ -7,7 +7,7 @@ function dbConnect() {
     useUnifiedTopology: true,
     serverApi: ServerApiVersion.v1,
   });
-  console.log("db connected");
+  console.log("db connected ii");
 }
 
-module.exports = dbConnect;
+module.exports = dbConnect;  
