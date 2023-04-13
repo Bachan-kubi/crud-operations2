@@ -26,6 +26,14 @@ async function run(){
             res.send(result);
         })
 
+        app.get('/comments/:id', async(req, res)=>{
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const singleComment = await allComments.findOne(filter);
+            res.send(singleComment);
+            console.log(singleComment)
+        })
+
 
         app.post('/comments', async(req, res)=>{
             const query = req.body;
